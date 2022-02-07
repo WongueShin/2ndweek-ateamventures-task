@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 90%;
   margin: auto;
+  margin-top: 70px;
 `;
 
 export const FilterZone = styled.div`
@@ -55,6 +56,7 @@ z-index: 1;
 border-radius: 15px;
 width: 42px;
 height: 15px;
+&:checked + ${ToggleBoxLabel} {
   background:  rgb(174, 168, 230);
   &::after {
     content: "";
