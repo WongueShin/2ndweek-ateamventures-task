@@ -5,12 +5,12 @@ import MainContainer from "Components/MainContainer/index.MainContainer";
 import RequestCard from "Components/RequestCard";
 import Nav from "Components/Nav/index.Nav";
 
-
 function App() {
   return (
     <>
       <GlobalStyle />
       Ateam ventures
+      <Nav />
       <Main />
       <RequestCard />
       <MainContainer />

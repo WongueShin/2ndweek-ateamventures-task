@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import * as S from 'Components/Main/style.Main';
-import MainContainer from 'Components/MainContainer/index.MainContainer';
-import Filter from 'Components/Filter/index.Filter';
+import React, { useEffect, useState } from "react";
+import * as S from "Components/Main/style.Main";
+import MainContainer from "Components/MainContainer/index.MainContainer";
+import { MaterialType } from "src/SangSu/MaterialType";
+import { MethodType } from "src/SangSu/MethodType";
+import Filter from "Components/Filter/index.Filter";
 
 export interface childType {
   id: number;
@@ -10,15 +12,15 @@ export interface childType {
   due: string;
   count: number;
   amount: number;
-  method: string[];
-  material: string[];
+  method: string[] | MethodType;
+  material: string[] | MaterialType;
   status: string;
 }
 
 export interface FilterType {
   method: string | null;
   material: string | null;
-  check: boolean
+  check: boolean;
 }
 
 async function UseFetch() {
@@ -33,11 +35,11 @@ async function UseFetch() {
 
 const Main: React.FC = () => {
   const [fetchData, setFetchData] = useState<childType[]>();
-  const [filter , setFilter] = useState<FilterType>({
+  const [filter, setFilter] = useState<FilterType>({
     method: null,
     material: null,
-    check:false
-  })
+    check: false,
+  });
   useEffect(() => {
     async function fetchRequestData() {
       const data = await UseFetch();
@@ -50,7 +52,7 @@ const Main: React.FC = () => {
   return (
     <>
       <S.Main>
-        <Filter filter={filter} setFilter={setFilter}/>
+        <Filter filter={filter} setFilter={setFilter} />
       </S.Main>
       <MainContainer data={fetchData} />
     </>
