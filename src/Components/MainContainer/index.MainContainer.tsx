@@ -10,14 +10,15 @@ interface Props {
 const MainContainer = ({ data }: Props) => {
   // console.log("제발");
   // console.log(data);
+  const NewData = data;
 
   return (
     <S.MainContainer>
-      {data &&
-        data.map((cardData: any, index: number) => {
+      {NewData &&
+        NewData.map((cardData: childType, index: number) => {
           return (
             <>
-              <RequestCard key={index.id} cardData={cardData} />
+              <RequestCard key={index} cardData={cardData} />
             </>
           );
         })}
