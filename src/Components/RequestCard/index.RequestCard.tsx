@@ -1,9 +1,8 @@
 import React from "react";
 import * as S from "Components/RequestCard/style.RequestCard";
 import { childType } from "Components/Main/index.Main";
-
 interface CardProps {
-  cardData?: childType | undefined;
+  cardData: childType;
 }
 const RequestCard = ({ cardData }: CardProps) => {
   console.log("하하", cardData);
