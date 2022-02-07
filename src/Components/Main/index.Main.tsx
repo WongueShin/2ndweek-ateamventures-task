@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
-import * as S from "Components/Main/style.Main";
-import MainContainer from "Components/MainContainer/index.MainContainer";
-import { MaterialType } from "src/SangSu/MaterialType";
-import { MethodType } from "src/SangSu/MethodType";
-import Filter from "Components/Filter/index.Filter";
+import React, { useEffect, useState } from 'react';
+import * as S from 'Components/Main/style.Main';
+import MainContainer from 'Components/MainContainer/index.MainContainer';
+import { MaterialType } from 'src/SangSu/MaterialType';
+import { MethodType } from 'src/SangSu/MethodType';
+import Filter from 'Components/Filter/index.Filter';
 
 export interface childType {
   id: number;
   title: string;
   client: string;
   due: string;
-  count: number;
+  count?: number;
+  docs?: number;
   amount: number;
   method: string[] | MethodType;
   material: string[] | MaterialType;
@@ -25,7 +26,7 @@ export interface FilterType {
 
 async function UseFetch() {
   try {
-    const response = await fetch("https://ateamserver.herokuapp.com/requests");
+    const response = await fetch('https://ateamserver.herokuapp.com/requests');
     const data: childType[] = await response.json();
     return data;
   } catch (error) {
