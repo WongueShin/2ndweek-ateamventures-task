@@ -1,8 +1,8 @@
-import React from 'react';
-import Main from 'Components/Main/index.Main';
-import { GlobalStyle } from './Style/style';
-import MainContainer from 'Components/MainContainer/index.MainContainer';
-import Nav from 'Components/Nav/index.Nav';
+import React from "react";
+import Main from "Components/Main/index.Main";
+import { GlobalStyle } from "./Style/style";
+// import MainContainer from "Components/MainContainer/index.MainContainer";
+import Nav from "Components/Nav/index.Nav";
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       Ateam ventures
       <Nav />
       <Main />
-      <MainContainer />
-      <Nav/>
+      {/* <MainContainer /> */}
+      <Nav />
     </>
   );
 }
