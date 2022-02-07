@@ -1,20 +1,20 @@
-import React from "react";
-import * as S from "Components/MainContainer/sytle.MainContainer";
+import React from 'react';
+import * as S from 'Components/MainContainer/sytle.MainContainer';
+import RequestCard from 'Components/RequestCard';
+import { childType } from 'Components/Main/index.Main';
 
-export interface childType {
-  id: number | string;
-  title: string;
-  client: string;
-  due: number | string;
-  count: number;
-  amount: number;
-  method: string[];
-  material: string[];
-  status: string;
+interface Props {
+  data?: childType[] | undefined;
 }
 
-const MainContainer: React.FC = () => {
-  return <S.MainContainer>박스 MAP</S.MainContainer>;
+const MainContainer = ({ data }: Props) => {
+  console.log('제발');
+  console.log(data);
+  return (
+    <S.MainContainer>
+      <RequestCard />
+    </S.MainContainer>
+  );
 };
 
 export default MainContainer;
