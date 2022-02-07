@@ -1,29 +1,21 @@
 import React from "react";
 import * as S from "Components/MainContainer/sytle.MainContainer";
+import RequestCard from "Components/RequestCard";
+// import { childType } from "Components/Main/index.Main";
 
-// export interface childType {
-//   id: number | string;
-//   title: string;
-//   client: string;
-//   due: number | string;
-//   count: number;
-//   amount: number;
-//   method: string[];
-//   material: string[];
-//   status: string;
+// interface Props {
+//   data: childType[];
 // }
 
-const MainContainer: React.FC = (data) => {
-  if (
-    data.method === !("밀링" || "선반") ||
-    data.material ===
-      !("알루미늄" || "강철" || "구리" || "탄소강" || "스테인리스강") ||
-    data.status === !("상담중" || "대기중")
-  ) {
-    return <h3>조건에 맞는 견적요청이 없습니다.</h3>;
-  } else {
-    return <S.MainContainer></S.MainContainer>;
-  }
+const MainContainer = (props: any) => {
+  const data = props;
+  console.log("제발");
+  console.log(data);
+  return (
+    <S.MainContainer>
+      <RequestCard />
+    </S.MainContainer>
+  );
 };
 
 export default MainContainer;
