@@ -8,12 +8,19 @@ interface Props {
 }
 
 const MainContainer = ({ data }: Props) => {
-  console.log("제발");
-  console.log(data);
+  // console.log("제발");
+  // console.log(data);
 
   return (
     <S.MainContainer>
-      <RequestCard />
+      {data &&
+        data.map((cardData: any, index: number) => {
+          return (
+            <>
+              <RequestCard key={index.id} cardData={cardData} />
+            </>
+          );
+        })}
     </S.MainContainer>
   );
 };
