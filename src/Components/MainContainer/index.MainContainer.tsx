@@ -4,12 +4,13 @@ import RequestCard from "Components/RequestCard";
 import { childType } from "Components/Main/index.Main";
 
 interface Props {
-  data?: childType[] | undefined;
+  data: childType[] | undefined;
 }
 
 const MainContainer = ({ data }: Props) => {
   console.log("제발");
   console.log(data);
+
   return (
     <S.MainContainer>
       <RequestCard />
