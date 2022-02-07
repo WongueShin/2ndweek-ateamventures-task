@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from 'Components/Main/style.Main';
-import { MainContainer } from 'Components/MainContainer/sytle.MainContainer';
+import MainContainer from 'Components/MainContainer/index.MainContainer';
 
 export interface childType {
   id: number;
@@ -17,7 +17,7 @@ export interface childType {
 async function UseFetch() {
   try {
     const response = await fetch('https://ateamserver.herokuapp.com/requests');
-    const data: childType = await response.json();
+    const data: childType[] = await response.json();
     return data;
   } catch (error) {
     console.log(error);
@@ -25,7 +25,7 @@ async function UseFetch() {
 }
 
 const Main: React.FC = () => {
-  const [fetchData, setFetchData] = useState<childType>();
+  const [fetchData, setFetchData] = useState<childType[]>();
   useEffect(() => {
     async function fetchRequestData() {
       const data = await UseFetch();
