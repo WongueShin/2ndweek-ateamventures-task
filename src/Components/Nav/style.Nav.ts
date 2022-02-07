@@ -1,15 +1,16 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const NavWarpper= styled.div<{background: string}>`
+export const NavWarpper= styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    background-color: ${Props => Props.background};
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
 `
 
 export const Nav = styled.nav`
+    visibility: visible;
     position: fixed;
     left: 0;
     top: 0;
@@ -19,30 +20,33 @@ export const Nav = styled.nav`
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
     @media (max-width: 425px){
         height: 44px;
+        width: 100%;
     }
 `
 
 export const PopupBackground = styled.div<{isPopup: boolean}>`
     background-color: #000000;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     opacity: 0.5;
     position: absolute;
     top: 0px;
     left: 0px;
-    display: ${Props=>Props.isPopup? "block" : "none"};
+    visibility: ${Props=>Props.isPopup? "visible" : "hidden"};
+    z-index: 4999 !important;
 `
 
 export const Popup = styled.div<{isPopup: boolean}>`
     background-color: #FFFFFF;
-    height: 100vh;
+    height: 100%;
     width: 280px;
     left: 0px;
     top: 0px;
     position: absolute;
     transition: transform 0.25s ease-in ;
-    visibility: ${Props=>Props.isPopup?"visible" : "hidden"};
+    visibility: ${Props=>Props.isPopup?"visible" : "hidden"} !important;
     transform: translateX(${Props => Props.isPopup?"0px" : "-280px"});
+    z-index: 5000 !important;
 `
 
 export const PopupHeader = styled.div`

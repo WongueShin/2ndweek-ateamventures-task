@@ -25,7 +25,6 @@ export const ToggleContainer = styled.div`
 `;
 
 export const ToggleBoxLabel = styled.label`
-  //53, 47, 110
   position: absolute;
   top: 0;
   left: 0;

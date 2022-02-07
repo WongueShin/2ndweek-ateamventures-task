@@ -14,6 +14,7 @@ function App() {
       <Main />
       <RequestCard />
       <MainContainer />
+      <Nav/>
     </>
   );
 }
