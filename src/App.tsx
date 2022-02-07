@@ -1,12 +1,16 @@
-import React from 'react';
+import React from "react";
 import Main from "Components/Main/index.Main";
+import { GlobalStyle } from "./Style/style";
 
 function App() {
   return (
-    <div>
-      Ateam ventures
-      <Main/>
-    </div>
+    <>
+      <GlobalStyle />
+      <div>
+        Ateam ventures
+        <Main />
+      </div>
+    </>
   );
 }
 
