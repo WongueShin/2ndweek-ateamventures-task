@@ -9,7 +9,6 @@ declare module "styled-components" {
     margin: number;
     padding: number;
     background: string;
-    border: string;
     borderRadius: string;
   }
 }
