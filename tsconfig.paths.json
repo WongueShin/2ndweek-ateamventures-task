@@ -4,7 +4,8 @@
         "paths": {
             "Const/*": ["src/Const/*"],
             "Components/*": ["src/Components/*"],
-            "Utils/*": ["src/Utils/*"]
+            "Utils/*": ["src/Utils/*"],
+            "Style/*": ["src/Style/*"]
         }
     }
 }
