@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as S from 'Components/MainContainer/sytleMC';
+import * as S from 'Components/MainContainer/style.MainContainer';
 import RequestCard from 'Components/RequestCard/index.RequestCard';
 import { childType } from 'Components/Main/index.Main';
 
