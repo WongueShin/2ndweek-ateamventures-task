@@ -5,21 +5,21 @@ import { FilterType } from "Components/Main/index.Main";
 import { useState } from "react";
 
 enum MaterialType {
-  알루미늄 = "알루미늄",
-  강철 = "강철",
-  구리 = "구리",
-  탄소강 = "탄소강",
-  스테인리스강 = "스테인리스강",
+  aluminum = "알루미늄",
+  steel = "강철",
+  copper = "구리",
+  carbonSteel = "탄소강",
+  stainlessSteel = "스테인리스강",
 }
 
 enum MethodType {
-  밀링 = "밀링",
-  선반 = "선반",
+  milling = "밀링",
+  shelf = "선반",
 }
 
 enum defaultMenu {
-  가공방식 = "가공방식",
-  재료 = "재료",
+  method = "가공방식",
+  material = "재료",
 }
 
 interface FilterPropsType {
@@ -53,25 +53,17 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
 
 const Select = (
   { data }: SelectPropsType,
-  { filter, setFilter }: FilterPropsType
+  { filter, setFilter }: FilterPropsType,
 ) => {
+
   const [isOpen, setIsOpen] = useState(false);
 
-  // const handleOpen = () => {
-  //   setIsOpen(true);
-  // };
-
   const handleSelect = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    position: string
+    item: string
   ): void => {
-    const newState = { ...filter };
 
-    position === "method"
-      ? newState.method?.push(e.target.value as string)
-      : newState.method?.push(e.target.value as string);
 
-      console.log(e.target.value)
+    console.log(filter)
 
   };
 
@@ -89,8 +81,8 @@ const Select = (
         isOpen={isOpen}
       >
         {Object.keys(data).length !== 2
-          ? defaultMenu.가공방식
-          : defaultMenu.재료}
+          ? defaultMenu.method
+          : defaultMenu.material}
         &nbsp;<S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
@@ -103,8 +95,8 @@ const Select = (
                     <label htmlFor="select">
                       <input
                         id="select"
-                        onChange={(e) => {
-                          handleSelect(e, "method");
+                        onChange={() => {
+                          handleSelect(data[item]);
                         }}
                         type="checkbox"
                         value={data[item]}
@@ -124,6 +116,7 @@ const Select = (
 
 const Toggle = ({ filter, setFilter }: FilterPropsType) => {
   const handleCheck = (): void => {
+    
     const newState = { ...filter };
 
     newState.check = !newState.check;

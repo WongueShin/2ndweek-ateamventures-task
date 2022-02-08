@@ -17,8 +17,8 @@ export interface childType {
 }
 
 export interface FilterType {
-  method: string[] | null;
-  material: string[] | null;
+  method: string[];
+  material: string[];
   check: boolean;
 }
 
@@ -35,8 +35,8 @@ async function UseFetch() {
 const Main: React.FC = () => {
   const [fetchData, setFetchData] = useState<childType[]>();
   const [filter, setFilter] = useState<FilterType>({
-    method: null,
-    material: null,
+    method: [],
+    material: [],
     check: false,
   });
   useEffect(() => {
