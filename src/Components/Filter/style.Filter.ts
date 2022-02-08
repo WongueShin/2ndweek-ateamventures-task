@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* width: 90%; */
-  margin: auto;
   margin-top: 110px;
   line-height: 1.6;
 
@@ -64,7 +62,7 @@ export const SelectBox = styled.ul<{ isOpen: boolean }>`
   & #select {
     width: 18px;
     height: 18px;
-    border: 2px solid ##939fa5;
+    border: 2px solid #939fa5;
     border-radius: 2px;
   }
   & li {
@@ -83,7 +81,7 @@ export const ResetBtn = styled.div`
   width: 16px;
   height: 16px;
   background-size: cover;
-  background-image: url("images/refresh.png");
+  background-image: url("Images/refresh.png");
   margin-right: 12px;
 `;
 
