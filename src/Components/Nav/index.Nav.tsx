@@ -6,8 +6,6 @@ function Nav(): JSX.Element {
     const handleOnClick = ():void => {
         setIsPopUp(!isPopup);
     }
-    
-    console.log(isPopup);
 
     return(
         <S.NavWarpper>

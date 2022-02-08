@@ -16,7 +16,6 @@ const MainContainer = ({ data }: Props) => {
     } else setLoading(true);
   }, [data]);
 
-  console.log(data);
 
   return (
     <S.MainContainerDiv>

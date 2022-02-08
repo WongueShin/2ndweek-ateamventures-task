@@ -72,10 +72,6 @@ const Filter = ({JsonData, filter, setFilter }: FilterPropsType) => {
     check: false,
   });
 
-  console.log(filter, filterStat);
-
-  
-
   useEffect(()=>{
     if(JsonData){
     let newState = [...JsonData];

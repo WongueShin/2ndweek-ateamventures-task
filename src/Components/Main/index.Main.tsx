@@ -36,7 +36,6 @@ const Main: React.FC = () => {
     }
     fetchRequestData();
   }, []);
-  console.log(fetchData);
 
   useEffect(() => {
     setFilter(fetchData);
