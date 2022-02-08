@@ -102,12 +102,13 @@ const Filter = ({JsonData, filter, setFilter }: FilterPropsType) => {
       <S.FilterZone>
         <S.SelectZone>
           <S.DropDown>
+            
             <S.SelectWarpper>
-              <Select data={MaterialType} filterStat={filterStat} setFilterStat={setFilterStat} />
+              <Select data={MethodType} filterStat={filterStat} setFilterStat={setFilterStat} />
             </S.SelectWarpper>
 
             <S.SelectWarpper>
-              <Select data={MethodType} filterStat={filterStat} setFilterStat={setFilterStat} />
+              <Select data={MaterialType} filterStat={filterStat} setFilterStat={setFilterStat} />
             </S.SelectWarpper>
 
             <S.ResetContainer onClick={() => {handleReset();}}>
