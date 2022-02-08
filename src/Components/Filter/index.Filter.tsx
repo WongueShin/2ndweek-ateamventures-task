@@ -45,15 +45,13 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
         <S.SelectZone>
           <Select data={MaterialType} filter={filter} setFilter={setFilter} />
           <Select data={MethodType} filter={filter} setFilter={setFilter} />
-          <S.ResetContainer>
+          <S.ResetContainer
+            onClick={() => {
+              handleReset();
+            }}
+          >
             <S.ResetBtn />
-            <S.ResetMessage
-              onClick={() => {
-                handleReset();
-              }}
-            >
-              필터링리셋
-            </S.ResetMessage>
+            <S.ResetMessage>필터링리셋</S.ResetMessage>
           </S.ResetContainer>
         </S.SelectZone>
         <Toggle filter={filter} setFilter={setFilter} />
