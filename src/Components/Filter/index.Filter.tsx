@@ -118,14 +118,15 @@ const Select = (props: SelectPropsType) => {
         {
           <S.SelectBox isOpen={isOpen}>
             {(Object.keys(props.data) as Array<keyof typeof props.data>).map(
-              (item) => {
+              (item,index) => {
                 return (
                   <li key={item}>
-                    <label htmlFor="select">
+                    <label htmlFor={`select${index}`}>
                       <input
-                        id="select"
+                        id={`select${index}`}
                         checked={handleChecked(props.data[item], props.data)}
                         onClick={(e) => {
+                          console.log(e.target)
                           e.stopPropagation();
                           handleSelect(props.data[item], props.data);
                         }}
