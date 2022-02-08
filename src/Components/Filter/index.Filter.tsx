@@ -1,20 +1,13 @@
 import * as S from "Components/Filter/style.Filter";
-import { FilterType } from "Components/Main/index.Main";
-// import { MaterialType } from "src/Const/MaterialType";
-// import { MethodType } from "src/Const/MethodType";
-import { useState } from "react";
+import { childType } from "Components/Main/index.Main";
+import { MaterialType } from "Const/MaterialType";
+import { MethodType } from "Const/MethodType";
+import { useEffect, useState } from "react";
 
-enum MaterialType {
-  aluminum = "알루미늄",
-  steel = "강철",
-  copper = "구리",
-  carbonSteel = "탄소강",
-  stainlessSteel = "스테인리스강",
-}
-
-enum MethodType {
-  milling = "밀링",
-  shelf = "선반",
+export interface FilterType {
+  method: string[];
+  material: string[];
+  check: boolean;
 }
 
 enum defaultMenu {
@@ -22,21 +15,86 @@ enum defaultMenu {
   material = "재료",
 }
 
-interface FilterPropsType {
-  filter: FilterType;
-  setFilter: React.Dispatch<React.SetStateAction<FilterType>>;
+enum isWaiting{
+  Waiting = "대기중",
+  inConsultation = "상담중",
 }
 
-interface SelectPropsType extends FilterPropsType {
+interface FilterPropsType {
+  JsonData: childType[]|undefined;
+  filter: childType[]|undefined;
+  setFilter: React.Dispatch<React.SetStateAction<childType[]|undefined>>;
+}
+
+interface TogglePropsType{
+  filterStat: FilterType;
+  setFilterStat: React.Dispatch<React.SetStateAction<FilterType>>;
+}
+
+interface SelectPropsType extends TogglePropsType{
   data: typeof MaterialType | typeof MethodType;
 }
 
-const Filter = ({ filter, setFilter }: FilterPropsType) => {
-  const handleReset = () => {
-    const newState = { method: [], material: [], check: filter.check };
-    setFilter(newState);
-  };
+function filterinConsultation(ele:childType){
+  return( ele.status == isWaiting.inConsultation )
+}
 
+
+function filterMaterial(ele:childType, filterStat:FilterType){
+  let returnvalue = false;
+  ele.material.forEach(materCase => {
+    for(let index = 0; index<filterStat.material.length; index++){
+      if(materCase == filterStat.material[index]){
+        returnvalue = true;
+      }
+    }
+  });
+  return returnvalue;
+}
+
+function filterMethod(ele:childType, filterStat:FilterType){
+  let returnvalue = false;
+  ele.method.forEach(methodCase => {
+    for(let index = 0; index<filterStat.method.length; index++){
+      if(methodCase == filterStat.method[index]){
+        returnvalue = true;
+      }
+    }
+  });
+  return returnvalue;
+}
+
+
+const Filter = ({JsonData, filter, setFilter }: FilterPropsType) => {
+  const [filterStat, setFilterStat] = useState<FilterType>({
+    method: [],
+    material: [],
+    check: false,
+  });
+
+  console.log(filter, filterStat);
+
+  
+
+  useEffect(()=>{
+    if(JsonData){
+    let newState = [...JsonData];
+    if(filterStat.check){
+      newState = newState.filter(filterinConsultation);
+    }
+    if(filterStat.material.length > 0){
+      newState = newState.filter((e) => filterMaterial(e, filterStat));
+    }
+    if(filterStat.method.length > 0){
+      newState = newState.filter((e)=>filterMethod(e, filterStat));
+    }
+    setFilter(newState);
+  }}, [filterStat])
+
+  const handleReset = () => {
+    const newState = { method: [], material: [], check: filterStat.check };
+    setFilterStat(newState);
+  };
   return (
     <S.Container>
       <h3>들어온 요청</h3>
@@ -44,10 +102,10 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
       <S.FilterZone>
         <S.SelectZone>
           <S.SelectWarpper>
-          <Select data={MaterialType} filter={filter} setFilter={setFilter} />
+          <Select data={MaterialType} filterStat={filterStat} setFilterStat={setFilterStat} />
           </S.SelectWarpper>
           <S.SelectWarpper>
-          <Select data={MethodType} filter={filter} setFilter={setFilter} />
+          <Select data={MethodType} filterStat={filterStat} setFilterStat={setFilterStat} />
           </S.SelectWarpper>
           <S.ResetContainer
             onClick={() => {
@@ -58,7 +116,7 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
             <S.ResetMessage>필터링리셋</S.ResetMessage>
           </S.ResetContainer>
         </S.SelectZone>
-        <Toggle filter={filter} setFilter={setFilter} />
+        <Toggle filterStat={filterStat} setFilterStat={setFilterStat} />
       </S.FilterZone>
     </S.Container>
   );
@@ -71,7 +129,7 @@ const Select = (props: SelectPropsType) => {
     item: string,
     position: typeof MaterialType | typeof MethodType
   ): void => {
-    const newState = { ...props.filter };
+    const newState = { ...props.filterStat };
 
     if (position === MaterialType) {
       !newState.material.includes(item)
@@ -82,7 +140,7 @@ const Select = (props: SelectPropsType) => {
         ? newState.method.push(item)
         : newState.method.splice(newState.method.indexOf(item), 1);
     }
-    props.setFilter(newState);
+    props.setFilterStat(newState);
   };
 
   const handleChecked = (
@@ -90,7 +148,7 @@ const Select = (props: SelectPropsType) => {
     position: typeof MaterialType | typeof MethodType
   ): boolean => {
 
-    const newState ={...props.filter};
+    const newState ={...props.filterStat};
 
     return position === MaterialType ? newState.material.includes(item) : newState.method.includes(item)
   };
@@ -111,7 +169,7 @@ const Select = (props: SelectPropsType) => {
         {Object.keys(props.data).length === 2
           ? defaultMenu.method
           : defaultMenu.material}
-        &nbsp;<span>{Object.keys(props.data).length === 2 ? props.filter.method.length !== 0 && `(${props.filter.method.length})` : props.filter.material.length !== 0 && `(${props.filter.material.length})`}</span>
+        &nbsp;<span>{Object.keys(props.data).length === 2 ? props.filterStat.method.length !== 0 && `(${props.filterStat.method.length})` : props.filterStat.material.length !== 0 && `(${props.filterStat.material.length})`}</span>
         <S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
@@ -145,13 +203,13 @@ const Select = (props: SelectPropsType) => {
   );
 };
 
-const Toggle = ({ filter, setFilter }: FilterPropsType) => {
+const Toggle = ({ filterStat, setFilterStat }:TogglePropsType) => {
   const handleCheck = (): void => {
-    const newState = { ...filter };
+    const newState = { ...filterStat };
 
     newState.check = !newState.check;
 
-    setFilter(newState);
+    setFilterStat(newState);
   };
 
   return (
@@ -161,7 +219,7 @@ const Toggle = ({ filter, setFilter }: FilterPropsType) => {
       }}
     >
       <S.ToggleBox
-        checked={filter.check}
+        checked={filterStat.check}
         id="checkbox"
         type="checkbox"
         readOnly
