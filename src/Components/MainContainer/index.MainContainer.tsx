@@ -19,24 +19,33 @@ const MainContainer = ({ data }: Props) => {
 
   console.log(data);
   return (
-    <S.MainContainer>
+    <S.MainContainerDiv>
       {isLoading ? (
         <>
-          <div>로딩 중</div>
+          <S.LoadingDiv>
+            <S.LoadingCircle />
+          </S.LoadingDiv>
         </>
       ) : (
         <>
-          {data &&
+          {data ? (
             data.map((cardData: childType, index: number) => {
               return (
                 <>
                   <RequestCard key={index} cardData={cardData} />
                 </>
               );
-            })}
+            })
+          ) : (
+            <>
+              <S.BlankDiv>
+                <S.BlankSpan>조건에 맞는 견적 요청이 없습니다.</S.BlankSpan>
+              </S.BlankDiv>
+            </>
+          )}
         </>
       )}
-    </S.MainContainer>
+    </S.MainContainerDiv>
   );
 };
 
