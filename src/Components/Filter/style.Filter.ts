@@ -134,6 +134,7 @@ export const ResetContainer = styled.div`
   display: flex;
   cursor: pointer;
   align-items: center;
+  margin-left: 14px;
 `;
 
 export const ResetMessage = styled.span`
@@ -217,7 +218,7 @@ export const ToggleMessage = styled.span`
   margin-left: 16px;
   color: #323d45;
   font-weight: 800;
-  transform: translateY(-10px);
+  transform: translateY(-5px);
   @media (max-width: 425px){
     transform: none;
     }
