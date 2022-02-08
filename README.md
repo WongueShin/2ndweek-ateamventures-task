@@ -14,7 +14,7 @@
 <td align="center"><a href="https://github.com/jyb1798"><img src="https://avatars.githubusercontent.com/u/64634495?s=400&u=3da5cb5a3ff4338da83a58a23df0608da5092ddc&v=4" width="100%" /></a></td>
 </tr>
 <tr>
-<td align="center"><b> 신원규(팀장) </b></td>
+<td align="center"><b>신원규(팀장)</b></td>
 <td align="center"><b>권영채</b></td>
 <td align="center"><b>김서윤</b></td>
 <td align="center"><b>지연비</b></td>
