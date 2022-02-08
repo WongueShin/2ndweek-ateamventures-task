@@ -55,7 +55,7 @@ const Select = (
   { data }: SelectPropsType,
   { filter, setFilter }: FilterPropsType
 ) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   // const handleOpen = () => {
   //   setIsOpen(true);
@@ -85,6 +85,7 @@ const Select = (
         onMouseEnter={() => {
           setIsOpen(true);
         }}
+        isOpen={isOpen}
       >
         {Object.keys(data).length !== 2
           ? defaultMenu.가공방식
