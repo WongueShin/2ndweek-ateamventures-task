@@ -29,18 +29,18 @@
 
 ### ✔️프로젝트 소개
 
-- 에이팀벤쳐스 고객사들의 요청을 카드 포멧으로 정리하여 모은 화면을 구현하였습니다.
-- Figma에 작성된 가이드를 따라 대시보드를 그대로 구현하였습니다.
-- 모바일 버전과 데스크탑 버전의 뷰를 적응형으로 구현하였습니다.
-- 타입스크립트으로 구현하였습니다.
-- json-server를 이용하여 mock rest-api server로 구현하였습니다.
+- [x] 에이팀벤쳐스 고객사들의 요청을 카드 포멧으로 정리하여 모은 화면을 구현하였습니다.
+- [x] Figma에 작성된 가이드를 따라 대시보드를 그대로 구현하였습니다.
+- [x] 모바일 버전과 데스크탑 버전의 뷰를 적응형으로 구현하였습니다.
+- [x] 타입스크립트으로 구현하였습니다.
+- [x] json-server를 이용하여 mock rest-api server로 구현하였습니다.
 
 ### ✔️ 이슈 사항
 
-- tsx에서 export 될 component 이름과 styled components가 이름이 같아서 발생한 이슈
+- src/Component/MainContainer/index.tsx에서 export 될 component 이름인 MainContainer가 MainContainer/style.ts 에서 같은 이름의 component가 선언되었습니다.
 
-  - No overload matches this call 메세지 : import하는 컴포넌트에서 export될 컴포넌트를 정확하게 인식하지 못하면서 전달할 인자의 타입 형식도 읽지 못하는 이슈가 있었습니다.
-  - 자동으로 styled components로 import 해오는 오류가 발생했습니다.
+  - No overload matches this call 메세지 : IDE의 자동완성 기능을 사용해 MainContainer/style.ts에서 export 되며, props의 TypeError가 발생했습니다.
+  <br/>팀 내부 코딩 컨밴션문서에 Component의 명명법에 대해서 명확히 규칙을 작성하면서, 향후에 같은 문제가 발생하지 않도록 대처하였습니다. 
 
 - Card container에서 loading state를 담당하는 부분을 추가로 작성한 이유
   - API 통신으로 받은 데이터를 Card container에서 props로 받도록 로직을 구현했습니다.
@@ -49,6 +49,6 @@
 ### ✔️프로젝트 회고
 
 - 신원규:
-- 권영채:
-- 김서윤:
+- 권영채: 프로젝트 시작 전 원활한 프로젝트 진행을 위해 활발한 소통을 약속하였고, 예상했던 것보다 더욱 소통하며 무사히 프로젝트를 마칠 수 있었습니다.
+- 김서윤: 처음 타입스크립트를 적용한 팀프로젝트였지만, 팀원들 각자 진행상황을 슬랙에 실시간으로 공유하면서 더욱 원활한 소통이 이루어졌고 프로젝트도 잘 마무리할 수 있었습니다. 
 - 지연비: 타입스크립트로 처음 협업을 해보았는데, 팀원들과의 실시간 소통과 협업이 잘 이루워져 재미있게 마무리한 프로젝트라고 생각합니다.
