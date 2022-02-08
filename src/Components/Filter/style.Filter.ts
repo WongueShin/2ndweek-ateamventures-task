@@ -13,6 +13,7 @@ export const Container = styled.div`
   }
   p{
     font-size:16px;
+    margin:0;
   }
 `;
 
