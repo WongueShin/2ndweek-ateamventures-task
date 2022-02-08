@@ -10,6 +10,9 @@ export const CardContainer = styled.div`
   border-radius: 4px;
   padding: 24px 16px;
   outline: solid 1px #e5e5e5;
+  :hover {
+    outline: solid 2px #2196f3;
+  }
 `;
 
 export const StatusDiv = styled.div`
