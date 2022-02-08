@@ -49,3 +49,5 @@ export const LoadingCircle = styled.div`
   animation: ${rotation} 0.2s linear infinite;
   animation-duration: 0.8s;
 `;
+
+
