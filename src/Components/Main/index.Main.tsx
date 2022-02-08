@@ -47,19 +47,18 @@ const Main: React.FC = () => {
     fetchRequestData();
   }, []);
   console.log(fetchData);
-  
-  useEffect(()=>{
-    console.log(filter)
 
-  },[filter])
+  useEffect(() => {
+    console.log(filter);
+  }, [filter]);
 
   return (
-    <>
-      <S.Main>
-        <Filter filter={filter} setFilter={setFilter} />
-      </S.Main>
+    <S.InnerMainContainer>
+      {/* <S.Main> */}
+      <Filter filter={filter} setFilter={setFilter} />
+      {/* </S.Main> */}
       <MainContainer data={fetchData} />
-    </>
+    </S.InnerMainContainer>
   );
 };
 
