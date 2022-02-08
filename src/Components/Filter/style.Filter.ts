@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* width: 90%; */
-  margin: auto;
   margin-top: 110px;
   line-height: 1.6;
 
@@ -28,7 +26,8 @@ export const FilterZone = styled.div`
   margin-top: 32px;
 `;
 
-export const SelectContainer = styled.div``;
+export const SelectContainer = styled.div`
+`;
 
 export const SelectDefault = styled.span<{ isOpen: boolean }>`
   display: flex;
@@ -46,26 +45,32 @@ export const ArrowIcon = styled.span`
   color: #939fa5;
 `;
 
+export const SelectWarpper = styled.div`
+  &:hover{
+    z-index: 200;
+  }
+`
+
 export const SelectZone = styled.div`
   display: flex;
 `;
 
 export const SelectBox = styled.ul<{ isOpen: boolean }>`
   transform: translateY(${(props) =>
-    props.isOpen ? "0px" : "-200px"}) !important;
-  transition 0.25s ease-in;
+    props.isOpen ? "0px" : "-200px"});
+  transition: transform 0.25s ease-in;
+  background-color: #FFFFFF;
   padding: 10px 6px;
   list-style: none;
   width: 130px;
   border-radius: 4px;
   border: 1px solid #939fa5;
   margin-right: 8px;
-  visibility: ${(props) => (props.isOpen ? `visible` : `hidden`)}
 
   & #select {
     width: 18px;
     height: 18px;
-    border: 2px solid ##939fa5;
+    border: 2px solid #939fa5;
     border-radius: 2px;
   }
   & li {
@@ -84,7 +89,7 @@ export const ResetBtn = styled.div`
   width: 16px;
   height: 16px;
   background-size: cover;
-  background-image: url("images/refresh.png");
+  background-image: url("Images/refresh.png");
   margin-right: 12px;
 `;
 
