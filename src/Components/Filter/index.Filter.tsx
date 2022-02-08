@@ -43,8 +43,12 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
       <p>파트너님에게 딱 맞는 요청서를 찾아보세요.</p>
       <S.FilterZone>
         <S.SelectZone>
+          <S.SelectWarpper>
           <Select data={MaterialType} filter={filter} setFilter={setFilter} />
+          </S.SelectWarpper>
+          <S.SelectWarpper>
           <Select data={MethodType} filter={filter} setFilter={setFilter} />
+          </S.SelectWarpper>
           <S.ResetContainer
             onClick={() => {
               handleReset();
@@ -81,6 +85,16 @@ const Select = (props: SelectPropsType) => {
     props.setFilter(newState);
   };
 
+  const handleChecked = (
+    item: string,
+    position: typeof MaterialType | typeof MethodType
+  ): boolean => {
+
+    const newState ={...props.filter};
+
+    return position === MaterialType ? newState.material.includes(item) : newState.method.includes(item)
+  };
+
   return (
     <S.SelectContainer
       onMouseLeave={() => {
@@ -94,27 +108,30 @@ const Select = (props: SelectPropsType) => {
         }}
         isOpen={isOpen}
       >
-        {Object.keys(props.data).length !== 2
+        {Object.keys(props.data).length === 2
           ? defaultMenu.method
           : defaultMenu.material}
-        &nbsp;
+        &nbsp;<span>{Object.keys(props.data).length === 2 ? props.filter.method.length !== 0 && `(${props.filter.method.length})` : props.filter.material.length !== 0 && `(${props.filter.material.length})`}</span>
         <S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
         {
           <S.SelectBox isOpen={isOpen}>
             {(Object.keys(props.data) as Array<keyof typeof props.data>).map(
-              (item) => {
+              (item,index) => {
                 return (
                   <li key={item}>
-                    <label htmlFor="select">
+                    <label htmlFor={`select${index}`}>
                       <input
-                        id="select"
+                        id={`select${index}`}
+                        checked={handleChecked(props.data[item], props.data)}
                         onClick={(e) => {
+                          console.log(e.target)
                           e.stopPropagation();
                           handleSelect(props.data[item], props.data);
                         }}
                         type="checkbox"
+                        readOnly
                       />
                       {props.data[item]}
                     </label>
