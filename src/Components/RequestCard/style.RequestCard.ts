@@ -13,7 +13,7 @@ export const CardContainer = styled.div`
   :hover {
     outline: solid 2px #2196f3;
   }
-  @media (max-width: 425px){
+  @media (max-width: 425px) {
     width: 320px;
     height: 344px;
     margin: 0 auto;
@@ -40,11 +40,17 @@ export const ProjectTitle = styled.span`
   line-height: 1.5;
   margin-bottom: 4px;
   font-weight: bold;
+  @media (max-width: 425px) {
+    margin-bottom: 0px;
+  }
 `;
 
 export const ClientName = styled.div`
   line-height: 20px;
   margin-bottom: 24px;
+  @media (max-width: 425px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const DueDateSpan = styled.span`
@@ -59,14 +65,11 @@ export const DivisionLine = styled.hr`
   background-color: #e5e5e5;
   margin: 0;
   margin-bottom: 31px;
-  @media (max-width: 425px){
-    border: 1px solid #E5E5E5;
-  }
 `;
 
 export const OrderContent = styled.div`
   margin-bottom: 8px;
-  @media (max-width: 425px){
+  @media (max-width: 425px) {
     display: flex;
     flex-direction: row;
   }
