@@ -81,6 +81,16 @@ const Select = (props: SelectPropsType) => {
     props.setFilter(newState);
   };
 
+  const handleChecked = (
+    item: string,
+    position: typeof MaterialType | typeof MethodType
+  ): boolean => {
+
+    const newState ={...props.filter};
+
+    return position === MaterialType ? newState.material.includes(item) : newState.method.includes(item)
+  };
+
   return (
     <S.SelectContainer
       onMouseLeave={() => {
@@ -110,6 +120,7 @@ const Select = (props: SelectPropsType) => {
                     <label htmlFor="select">
                       <input
                         id="select"
+                        checked={handleChecked(props.data[item], props.data)}
                         onClick={(e) => {
                           e.stopPropagation();
                           handleSelect(props.data[item], props.data);
