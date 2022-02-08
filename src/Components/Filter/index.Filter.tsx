@@ -177,19 +177,21 @@ const Select = (props: SelectPropsType) => {
               (item,index) => {
                 return (
                   <li key={item}>
-                    <label htmlFor={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}>
-                      <input
-                        id={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}
-                        checked={handleChecked(props.data[item], props.data)}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSelect(props.data[item], props.data);
-                        }}
-                        type="checkbox"
-                        readOnly
-                      />
-                      {props.data[item]}
-                    </label>
+                    <form onSubmit={(e)=>{e.preventDefault()}}>
+                      <label htmlFor={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}>
+                        <input
+                          id={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}
+                          checked={handleChecked(props.data[item], props.data)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSelect(props.data[item], props.data);
+                          }}
+                          type="checkbox"
+                          readOnly
+                          />
+                        {props.data[item]}
+                      </label>
+                    </form>
                   </li>
                 );
               }
@@ -216,12 +218,14 @@ const Toggle = ({ filterStat, setFilterStat }:TogglePropsType) => {
         handleCheck();
       }}
     >
-      <S.ToggleBox
-        checked={filterStat.check}
-        id="checkbox"
-        type="checkbox"
-        readOnly
-      />
+      <form onSubmit={(e)=>e.preventDefault()}>
+        <S.ToggleBox
+          checked={filterStat.check}
+          id="checkbox"
+          type="checkbox"
+          readOnly
+        />
+      </form>
       <S.ToggleBoxLabel />
       <S.ToggleMessage>상담 중인 요청만 보기</S.ToggleMessage>
     </S.ToggleContainer>
