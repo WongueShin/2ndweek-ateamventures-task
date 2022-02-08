@@ -71,7 +71,8 @@ const Select = (
       ? newState.method?.push(e.target.value as string)
       : newState.method?.push(e.target.value as string);
 
-    setFilter(newState);
+      console.log(e.target.value)
+
   };
 
   return (
@@ -90,7 +91,7 @@ const Select = (
         {Object.keys(data).length !== 2
           ? defaultMenu.가공방식
           : defaultMenu.재료}
-        &nbsp;▼
+        &nbsp;<S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
       {
