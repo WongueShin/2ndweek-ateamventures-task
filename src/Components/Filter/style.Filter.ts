@@ -52,7 +52,7 @@ export const SelectZone = styled.div`
 
 export const SelectBox = styled.ul<{ isOpen: boolean }>`
   transform: translateY(${(props) =>
-    props.isOpen ? "0px" : "-200px"}) !important;
+    props.isOpen ? "0px" : "-200px"});
   transition 0.25s ease-in;
   padding: 10px 6px;
   list-style: none;
@@ -60,7 +60,6 @@ export const SelectBox = styled.ul<{ isOpen: boolean }>`
   border-radius: 4px;
   border: 1px solid #939fa5;
   margin-right: 8px;
-  visibility: ${(props) => (props.isOpen ? `visible` : `hidden`)}
 
   & #select {
     width: 18px;

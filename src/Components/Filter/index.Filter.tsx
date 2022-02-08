@@ -104,10 +104,10 @@ const Select = (props: SelectPropsType) => {
         }}
         isOpen={isOpen}
       >
-        {Object.keys(props.data).length !== 2
+        {Object.keys(props.data).length === 2
           ? defaultMenu.method
           : defaultMenu.material}
-        &nbsp;
+        &nbsp;<span>{Object.keys(props.data).length === 2 ? props.filter.method.length !== 0 && `(${props.filter.method.length})` : props.filter.material.length !== 0 && `(${props.filter.material.length})`}</span>
         <S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
