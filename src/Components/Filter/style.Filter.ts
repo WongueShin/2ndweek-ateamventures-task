@@ -26,7 +26,8 @@ export const FilterZone = styled.div`
   margin-top: 32px;
 `;
 
-export const SelectContainer = styled.div``;
+export const SelectContainer = styled.div`
+`;
 
 export const SelectDefault = styled.span<{ isOpen: boolean }>`
   display: flex;
@@ -44,6 +45,12 @@ export const ArrowIcon = styled.span`
   color: #939FA5;
 `
 
+export const SelectWarpper = styled.div`
+  &:hover{
+    z-index: 200;
+  }
+`
+
 export const SelectZone = styled.div`
   display: flex;
 `;
@@ -51,7 +58,8 @@ export const SelectZone = styled.div`
 export const SelectBox = styled.ul<{ isOpen: boolean }>`
   transform: translateY(${(props) =>
     props.isOpen ? "0px" : "-200px"});
-  transition 0.25s ease-in;
+  transition: transform 0.25s ease-in;
+  background-color: #FFFFFF;
   padding: 10px 6px;
   list-style: none;
   width: 130px;
