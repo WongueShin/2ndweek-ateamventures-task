@@ -6,13 +6,18 @@ export const Container = styled.div`
   margin-top: 70px;
 `;
 
+export const OverFlowContainer = styled.div`
+  overflow:hidden;
+`
+
 export const FilterZone = styled.div`
   display: flex;
-  height: 33px;
+  height: 34px;
   justify-content: space-between;
 `;
 
 export const SelectContainer = styled.div`
+z-index: 11;
 `;
 
 export const SelectDefault = styled.span`
@@ -34,6 +39,8 @@ export const SelectZone = styled.div`
 `;
 
 export const SelectBox = styled.ul<{isOpen :boolean}>`
+  transform: translateY(${props=> props.isOpen ? "0px" : "-200px"}) !important;
+  transition 0.25s ease-in;
   padding: 10px 6px;
   list-style: none;
   width: 130px;
