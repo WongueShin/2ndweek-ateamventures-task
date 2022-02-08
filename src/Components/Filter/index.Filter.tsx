@@ -5,21 +5,21 @@ import { FilterType } from "Components/Main/index.Main";
 import { useState } from "react";
 
 enum MaterialType {
-  알루미늄 = "알루미늄",
-  강철 = "강철",
-  구리 = "구리",
-  탄소강 = "탄소강",
-  스테인리스강 = "스테인리스강",
+  aluminum = "알루미늄",
+  steel = "강철",
+  copper = "구리",
+  carbonSteel = "탄소강",
+  stainlessSteel = "스테인리스강",
 }
 
 enum MethodType {
-  밀링 = "밀링",
-  선반 = "선반",
+  milling = "밀링",
+  shelf = "선반",
 }
 
 enum defaultMenu {
-  가공방식 = "가공방식",
-  재료 = "재료",
+  method = "가공방식",
+  material = "재료",
 }
 
 interface FilterPropsType {
@@ -51,27 +51,17 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
   );
 };
 
-const Select = (
-  { data }: SelectPropsType,
-  { filter, setFilter }: FilterPropsType
-) => {
+const Select = (props: SelectPropsType) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // const handleOpen = () => {
-  //   setIsOpen(true);
-  // };
+  const handleSelect = (item: string, position :typeof MaterialType | typeof MethodType): void => {
+    
+    const newState = {...props.filter}
 
-  const handleSelect = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    position: string
-  ): void => {
-    const newState = { ...filter };
+    position === MaterialType ? newState.material.push(item) : newState.method.push(item);
 
-    position === "method"
-      ? newState.method?.push(e.target.value as string)
-      : newState.method?.push(e.target.value as string);
+    props.setFilter(newState);
 
-    setFilter(newState);
   };
 
   return (
@@ -87,35 +77,35 @@ const Select = (
         }}
         isOpen={isOpen}
       >
-        {Object.keys(data).length !== 2
-          ? defaultMenu.가공방식
-          : defaultMenu.재료}
-        &nbsp;▼
+        {Object.keys(props.data).length !== 2
+          ? defaultMenu.method
+          : defaultMenu.material}
+        &nbsp;
+          <S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
-      {
+        {
           <S.SelectBox isOpen={isOpen}>
-            {(Object.keys(data) as Array<keyof typeof data>).map((item) => {
-              return (
-                <>
-                  <li key={item}>
-                    <label htmlFor="select">
-                      <input
-                        id="select"
-                        onChange={(e) => {
-                          handleSelect(e, "method");
-                        }}
-                        type="checkbox"
-                        value={data[item]}
-                      />
-                      {data[item]}
-                    </label>
-                  </li>
-                </>
-              );
-            })}
+            {(Object.keys(props.data) as Array<keyof typeof props.data>).map(
+              (item) => {
+                return (
+                    <li key={item}>
+                      <label htmlFor="select">
+                        <input
+                          id="select"
+                          onChange={() => {
+                            handleSelect(props.data[item], props.data );
+                          }}
+                          type="checkbox"
+                        />
+                        {props.data[item]}
+                      </label>
+                    </li>
+                );
+              }
+            )}
           </S.SelectBox>
-      }
+        }
       </S.OverFlowContainer>
     </S.SelectContainer>
   );
