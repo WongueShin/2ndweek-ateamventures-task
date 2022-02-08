@@ -1,10 +1,8 @@
-# 2ndweek-ateamventures-task
+# 에이팀벤쳐스 기업과제
 
-## 에이팀벤쳐스 기업과제
+## ✔️배포링크
 
-### ✔️배포링크
-
-### ✔️팀원 소개
+## ✔️팀원 소개
 
 <table align="center">
 <tr>
@@ -27,7 +25,7 @@
 </tr>
 </table>
 
-### ✔️프로젝트 소개
+## ✔️프로젝트 소개
 
 - [x] 에이팀벤쳐스 고객사들의 요청을 카드 포멧으로 정리하여 모은 화면을 구현하였습니다.
 - [x] Figma에 작성된 가이드를 따라 대시보드를 그대로 구현하였습니다.
@@ -35,7 +33,7 @@
 - [x] 타입스크립트를 사용해 구현하였습니다.
 - [x] json-server를 이용하여 mock rest-api server로 구현하였습니다.
 
-### ✔️ 이슈 사항
+## ✔️ 이슈 사항
 
 ### Absolute Path
 
@@ -57,20 +55,20 @@
 
 우리팀은 사용자의 관점에서 생각해보기로 했습니다. 내가 사용했을 때 어떤 기능이 편할 것인가, 그리고 시중에 서비스되고 있는 여러 사이트를 참고하여 `or` 로 결정하였습니다.
 
-#### Naming의 중요성 
+### Naming의 중요성 
 
 src/Component/MainContainer/index.tsx에서 export 될 component 이름인 MainContainer가 MainContainer/style.ts 에서 같은 이름의 component가 선언되었습니다.
 
 - No overload matches this call 메세지 : IDE의 자동완성 기능을 사용해 MainContainer/style.ts에서 export 되며, props의 TypeError가 발생했습니다. 팀 내부 코딩 컨밴션문서에 Component의 명명법에 대해서 명확히 규칙을 작성하면서, 향후에 같은 문제가 발생하지 않도록 대처하였습니다. 
 
-#### Loading
+### Loading
 
 Card container에서 loading state를 담당하는 부분을 추가로 작성한 이유
 
 - API 통신으로 받은 데이터를 Card container에서 props로 받도록 로직을 구현했습니다.
 - API 통신 전까지는 datat가 없기 때문에 이 때 loading이 나타나도록 loading state 코드를 작성하였습니다.
 
-### ✔️프로젝트 회고
+## ✔️프로젝트 회고
 
 - 신원규:
 - 권영채: 프로젝트 시작 전 원활한 프로젝트 진행을 위해 활발한 소통을 약속하였고, 예상했던 것보다 더욱 소통하며 무사히 프로젝트를 마칠 수 있었습니다.
