@@ -101,20 +101,21 @@ const Filter = ({JsonData, filter, setFilter }: FilterPropsType) => {
       <p>파트너님에게 딱 맞는 요청서를 찾아보세요.</p>
       <S.FilterZone>
         <S.SelectZone>
-          <S.SelectWarpper>
-          <Select data={MaterialType} filterStat={filterStat} setFilterStat={setFilterStat} />
-          </S.SelectWarpper>
-          <S.SelectWarpper>
-          <Select data={MethodType} filterStat={filterStat} setFilterStat={setFilterStat} />
-          </S.SelectWarpper>
-          <S.ResetContainer
-            onClick={() => {
-              handleReset();
-            }}
-          >
-            <S.ResetBtn />
-            <S.ResetMessage>필터링리셋</S.ResetMessage>
-          </S.ResetContainer>
+          <S.DropDown>
+            <S.SelectWarpper>
+              <Select data={MaterialType} filterStat={filterStat} setFilterStat={setFilterStat} />
+            </S.SelectWarpper>
+
+            <S.SelectWarpper>
+              <Select data={MethodType} filterStat={filterStat} setFilterStat={setFilterStat} />
+            </S.SelectWarpper>
+
+            <S.ResetContainer onClick={() => {handleReset();}}>
+              <S.ResetBtn />
+              <S.ResetMessage>필터링리셋</S.ResetMessage>
+            </S.ResetContainer>
+          </S.DropDown>
+
         </S.SelectZone>
         <Toggle filterStat={filterStat} setFilterStat={setFilterStat} />
       </S.FilterZone>
@@ -172,7 +173,7 @@ const Select = (props: SelectPropsType) => {
         &nbsp;<span>{Object.keys(props.data).length === 2 ? props.filterStat.method.length !== 0 && `(${props.filterStat.method.length})` : props.filterStat.material.length !== 0 && `(${props.filterStat.material.length})`}</span>
         <S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
-      <S.OverFlowContainer>
+      <S.OverFlowContainer isOpen= {isOpen}>
         {
           <S.SelectBox isOpen={isOpen}>
             {(Object.keys(props.data) as Array<keyof typeof props.data>).map(

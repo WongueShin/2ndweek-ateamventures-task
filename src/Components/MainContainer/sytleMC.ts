@@ -6,6 +6,12 @@ export const MainContainerDiv = styled.div`
   grid-column-gap: 16px;
   grid-row-gap: 16px;
   margin-top: 50px;
+
+  @media (max-width: 425px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const BlankDiv = styled.div`
