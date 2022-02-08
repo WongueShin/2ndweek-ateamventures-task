@@ -3,7 +3,18 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 90%;
   margin: auto;
-  margin-top: 70px;
+  margin-top: 110px;
+  line-height:1.6;
+
+  h3{
+    color:#323D45;
+    font-size:20px;
+    margin:0;
+  }
+  p{
+    font-size:16px;
+    margin:0;
+  }
 `;
 
 export const OverFlowContainer = styled.div`
@@ -14,13 +25,13 @@ export const FilterZone = styled.div`
   display: flex;
   height: 34px;
   justify-content: space-between;
+  margin-top: 32px;
 `;
 
 export const SelectContainer = styled.div`
-z-index: 11;
 `;
 
-export const SelectDefault = styled.span`
+export const SelectDefault = styled.span<{isOpen :boolean}>`
   display: flex;
   width: 98px;
   height: 32px;
@@ -28,10 +39,8 @@ export const SelectDefault = styled.span`
   border: 1px solid #939fa5;
   justify-content: center;
   align-items: center;
-  &:hover{
-    background:#1565C0;
-    color:#fff;
-  }
+  background : ${props => props.isOpen ? "#1565C0" : "#fff"};
+  color : ${props => props.isOpen ? "#fff" : "#000"};
 `;
 
 export const SelectZone = styled.div`
