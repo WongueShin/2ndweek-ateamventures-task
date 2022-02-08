@@ -1,7 +1,7 @@
 export enum MaterialType {
-  알류미늄 = "알루미늄",
-  강철 = "강철",
-  구리 = "구리",
-  탄소강 = "탄소강",
-  스테인리스강 = "스테인리스강",
+  aluminum = "알루미늄",
+  steel = "강철",
+  copper = "구리",
+  carbonSteel = "탄소강",
+  stainlessSteel = "스테인리스강",
 }

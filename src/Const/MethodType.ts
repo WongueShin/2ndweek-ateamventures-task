@@ -1,4 +1,4 @@
 export enum MethodType {
-  밀링 = "밀링",
-  선반 = "선반",
+  milling = "밀링",
+  shelf = "선반",
 }
