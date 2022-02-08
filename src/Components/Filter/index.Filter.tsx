@@ -121,9 +121,9 @@ const Select = (props: SelectPropsType) => {
               (item,index) => {
                 return (
                   <li key={item}>
-                    <label htmlFor={`select${index}`}>
+                    <label htmlFor={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}>
                       <input
-                        id={`select${index}`}
+                        id={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}
                         checked={handleChecked(props.data[item], props.data)}
                         onClick={(e) => {
                           e.stopPropagation();
