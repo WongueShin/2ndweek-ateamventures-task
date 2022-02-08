@@ -42,8 +42,8 @@ export const SelectDefault = styled.span<{ isOpen: boolean }>`
 `;
 
 export const ArrowIcon = styled.span`
-  color: #939FA5;
-`
+  color: #939fa5;
+`;
 
 export const SelectWarpper = styled.div`
   &:hover{
