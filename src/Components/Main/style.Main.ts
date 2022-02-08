@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
-export const Main = styled.div`
+export const Main = styled.main`
+  margin: 0 auto;
   margin-top: 100px;
-`;
-
-export const InnerMainContainer = styled.div`
   width: 1130px;
-  margin: 0 154px 60px;
 `;
