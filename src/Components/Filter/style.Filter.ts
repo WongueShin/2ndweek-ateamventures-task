@@ -144,10 +144,15 @@ export const ResetMessage = styled.span`
     }
 `;
 
+export const Form = styled.form`
+cursor: pointer;
+`
+
 export const ToggleContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
   top: 10px;
   @media (max-width: 425px){
     padding-top: 20px;

@@ -177,7 +177,7 @@ const Select = (props: SelectPropsType) => {
               (item,index) => {
                 return (
                   <li key={item}>
-                    <form onSubmit={(e)=>{e.preventDefault()}}>
+                    <S.Form onSubmit={(e)=>{e.preventDefault()}}>
                       <label htmlFor={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}>
                         <input
                           id={`${(Object.keys(props.data).length === 2 ? `method` : `material`)}${index}`}
@@ -191,7 +191,7 @@ const Select = (props: SelectPropsType) => {
                           />
                         {props.data[item]}
                       </label>
-                    </form>
+                    </S.Form>
                   </li>
                 );
               }
@@ -213,22 +213,22 @@ const Toggle = ({ filterStat, setFilterStat }:TogglePropsType) => {
   };
 
   return (
-    <S.ToggleContainer
-      onClick={() => {
-        handleCheck();
-      }}
-    >
-      <form onSubmit={(e)=>e.preventDefault()}>
-        <S.ToggleBox
-          checked={filterStat.check}
-          id="checkbox"
-          type="checkbox"
-          readOnly
-        />
-      </form>
-      <S.ToggleBoxLabel />
-      <S.ToggleMessage>상담 중인 요청만 보기</S.ToggleMessage>
-    </S.ToggleContainer>
+    <S.Form onSubmit={(e)=>e.preventDefault()}>
+      <S.ToggleContainer
+        onClick={() => {
+          handleCheck();
+        }}
+      >
+          <S.ToggleBox
+            checked={filterStat.check}
+            id="checkbox"
+            type="checkbox"
+            readOnly
+          />
+        <S.ToggleBoxLabel />
+        <S.ToggleMessage>상담 중인 요청만 보기</S.ToggleMessage>
+      </S.ToggleContainer>
+    </S.Form>
   );
 };
 
