@@ -18,7 +18,8 @@ export const Container = styled.div`
 
   }
   @media (max-width: 425px){
-    width: 100vw;
+    width: 320px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     h3{
