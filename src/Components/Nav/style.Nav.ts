@@ -4,7 +4,7 @@ export const NavWarpper= styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     visibility: hidden;
 `
@@ -20,7 +20,7 @@ export const Nav = styled.nav`
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
     @media (max-width: 425px){
         height: 44px;
-        width: 100%;
+        width: 100vw;
     }
 `
 
