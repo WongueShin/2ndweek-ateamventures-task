@@ -11,8 +11,8 @@ export interface childType {
   count?: number;
   docs?: number;
   amount: number;
-  method: string[] ;
-  material: string[] ;
+  method: string[];
+  material: string[];
   status: string;
 }
 
@@ -24,7 +24,7 @@ export interface FilterType {
 
 async function UseFetch() {
   try {
-    const response = await fetch('https://ateamserver.herokuapp.com/requests');
+    const response = await fetch("https://ateamserver.herokuapp.com/requests");
     const data: childType[] = await response.json();
     return data;
   } catch (error) {

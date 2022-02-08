@@ -1,14 +1,15 @@
-import React from 'react';
-import * as S from 'Components/RequestCard/style.RequestCard';
-import { childType } from 'Components/Main/index.Main';
+import React from "react";
+import * as S from "Components/RequestCard/style.RequestCard";
+import { childType } from "Components/Main/index.Main";
+
 interface CardProps {
   cardData: childType;
 }
 const RequestCard = ({ cardData }: CardProps) => {
-  console.log('하하', cardData);
+  console.log("하하", cardData);
   return (
     <S.CardContainer>
-      {cardData.status === '상담중' ? (
+      {cardData.status === "상담중" ? (
         <>
           <S.StatusDiv>
             <S.StatusSpan>상담중</S.StatusSpan>
