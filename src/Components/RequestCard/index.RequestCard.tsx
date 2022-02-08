@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "Components/RequestCard/style.RequestCard";
 import { childType } from "Components/Main/index.Main";
+
 interface CardProps {
   cardData: childType;
 }

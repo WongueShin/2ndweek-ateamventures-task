@@ -4,18 +4,19 @@ import RequestCard from "Components/RequestCard/index.RequestCard";
 import { childType } from "Components/Main/index.Main";
 
 interface Props {
-  data: childType[] | undefined;
+  data: childType[];
 }
 
 const MainContainer = ({ data }: Props) => {
-  // console.log("제발");
-  // console.log(data);
-  const NewData = data;
-
+  if (
+    data.method.length === 0 ||
+    data.material.length === 0
+  ) {
+    return <h3>조건에 맞는 견적요청이 없습니다.</h3>;
   return (
     <S.MainContainer>
-      {NewData &&
-        NewData.map((cardData: childType, index: number) => {
+      {data &&
+        data.map((cardData: childType, index: number) => {
           return (
             <>
               <RequestCard key={index} cardData={cardData} />
