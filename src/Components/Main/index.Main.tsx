@@ -16,12 +16,6 @@ export interface childType {
   status: string;
 }
 
-export interface FilterType {
-  method: string[];
-  material: string[];
-  check: boolean;
-}
-
 async function UseFetch() {
   try {
     const response = await fetch("https://ateamserver.herokuapp.com/requests");
@@ -34,11 +28,7 @@ async function UseFetch() {
 
 const Main: React.FC = () => {
   const [fetchData, setFetchData] = useState<childType[]>();
-  const [filter, setFilter] = useState<FilterType>({
-    method: [],
-    material: [],
-    check: false,
-  });
+  const [filter, setFilter] = useState<childType[]>();
   useEffect(() => {
     async function fetchRequestData() {
       const data = await UseFetch();
@@ -49,13 +39,13 @@ const Main: React.FC = () => {
   console.log(fetchData);
 
   useEffect(() => {
-    console.log(filter);
-  }, [filter]);
+    setFilter(fetchData);
+  }, [fetchData]);
 
   return (
       <S.Main> 
-      <Filter filter={filter} setFilter={setFilter} />
-      <MainContainer data={fetchData} />
+      <Filter JsonData={fetchData} filter={filter} setFilter={setFilter} />
+      <MainContainer data={filter} />
       </S.Main> 
   );
 };
