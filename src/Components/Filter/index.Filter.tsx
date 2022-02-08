@@ -57,9 +57,9 @@ const Select = (
 ) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
+  // const handleOpen = () => {
+  //   setIsOpen(true);
+  // };
 
   const handleSelect = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -85,35 +85,38 @@ const Select = (
         onMouseEnter={() => {
           setIsOpen(true);
         }}
+        isOpen={isOpen}
       >
         {Object.keys(data).length !== 2
           ? defaultMenu.가공방식
           : defaultMenu.재료}
         &nbsp;▼
       </S.SelectDefault>
+      <S.OverFlowContainer>
       {
-        <S.SelectBox isOpen={isOpen}>
-          {(Object.keys(data) as Array<keyof typeof data>).map((item) => {
-            return (
-              <>
-                <li key={item}>
-                  <label htmlFor="select">
-                    <input
-                      id="select"
-                      onChange={(e) => {
-                        handleSelect(e, "method");
-                      }}
-                      type="checkbox"
-                      value={data[item]}
-                    />
-                    {data[item]}
-                  </label>
-                </li>
-              </>
-            );
-          })}
-        </S.SelectBox>
+          <S.SelectBox isOpen={isOpen}>
+            {(Object.keys(data) as Array<keyof typeof data>).map((item) => {
+              return (
+                <>
+                  <li key={item}>
+                    <label htmlFor="select">
+                      <input
+                        id="select"
+                        onChange={(e) => {
+                          handleSelect(e, "method");
+                        }}
+                        type="checkbox"
+                        value={data[item]}
+                      />
+                      {data[item]}
+                    </label>
+                  </li>
+                </>
+              );
+            })}
+          </S.SelectBox>
       }
+      </S.OverFlowContainer>
     </S.SelectContainer>
   );
 };
