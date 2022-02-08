@@ -43,8 +43,12 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
       <p>파트너님에게 딱 맞는 요청서를 찾아보세요.</p>
       <S.FilterZone>
         <S.SelectZone>
+          <S.SelectWarpper>
           <Select data={MaterialType} filter={filter} setFilter={setFilter} />
+          </S.SelectWarpper>
+          <S.SelectWarpper>
           <Select data={MethodType} filter={filter} setFilter={setFilter} />
+          </S.SelectWarpper>
           <S.ResetContainer
             onClick={() => {
               handleReset();
