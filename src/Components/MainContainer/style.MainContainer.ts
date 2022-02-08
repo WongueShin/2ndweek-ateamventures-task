@@ -20,6 +20,10 @@ export const BlankDiv = styled.div`
   border: 1px solid #c2c2c2;
   border-radius: 4px;
   text-align: center;
+  @media (max-width: 425px) {
+    width: 288px;
+    margin: 0 auto;
+  }
 `;
 
 export const BlankSpan = styled.span`
