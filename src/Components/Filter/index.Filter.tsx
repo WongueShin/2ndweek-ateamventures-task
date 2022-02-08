@@ -126,6 +126,7 @@ const Select = (props: SelectPropsType) => {
                           handleSelect(props.data[item], props.data);
                         }}
                         type="checkbox"
+                        readOnly
                       />
                       {props.data[item]}
                     </label>
