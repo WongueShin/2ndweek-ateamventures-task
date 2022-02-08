@@ -17,8 +17,8 @@ export interface childType {
 }
 
 export interface FilterType {
-  method: string | null;
-  material: string | null;
+  method: string[] | null;
+  material: string[] | null;
   check: boolean;
 }
 
@@ -47,6 +47,11 @@ const Main: React.FC = () => {
     fetchRequestData();
   }, []);
   console.log(fetchData);
+  
+  useEffect(()=>{
+    console.log(filter)
+
+  },[filter])
 
   return (
     <>

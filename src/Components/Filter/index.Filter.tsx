@@ -27,59 +27,25 @@ interface FilterPropsType {
   setFilter: React.Dispatch<React.SetStateAction<FilterType>>;
 }
 
-interface SelectPropsType {
+interface SelectPropsType extends FilterPropsType {
   data: typeof MaterialType | typeof MethodType;
 }
 
 const Filter = ({ filter, setFilter }: FilterPropsType) => {
-  const handleCheck = (): void => {
-    const newState = { ...filter };
-
-    newState.check = !newState.check;
-
-    setFilter(newState);
-  };
-
-  const handleSelect = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-    position: string
-  ): void => {
-    const newSelect = { ...filter };
-
-    position === "method"
-      ? (newSelect.method = e.target.value)
-      : (newSelect.material = e.target.value);
-
-    setFilter(newSelect);
-  };
-
   return (
     <S.Container>
       <h3>들어온 요청</h3>
       <p>파트너님에게 딱 맞는 요청서를 찾아보세요.</p>
       <S.FilterZone>
         <S.SelectZone>
-          <Select data={MaterialType} />
-          <Select data={MethodType} />
+          <Select data={MaterialType} filter={filter} setFilter={setFilter} />
+          <Select data={MethodType} filter={filter} setFilter={setFilter} />
           <S.ResetContainer>
             <S.ResetBtn />
             <S.ResetMessage>필터링리셋</S.ResetMessage>
           </S.ResetContainer>
         </S.SelectZone>
-        <S.ToggleContainer>
-          <S.ToggleBox
-            checked={filter.check}
-            id="checkbox"
-            type="checkbox"
-            readOnly
-          />
-          <S.ToggleBoxLabel
-            onClick={() => {
-              handleCheck();
-            }}
-          />
-          <span>상담 중인 요청만 보기</span>
-        </S.ToggleContainer>
+        <Toggle filter={filter} setFilter={setFilter} />
       </S.FilterZone>
     </S.Container>
   );
@@ -89,62 +55,93 @@ const Select = (
   { data }: SelectPropsType,
   { filter, setFilter }: FilterPropsType
 ) => {
-  const [isOpen, setIsOpen] = useState([
-    { idx: 1, state: false },
-    { idx: 2, state: false },
-  ]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
-    const newState = [...isOpen];
-
-    // setIsOpen(isOpen[index]);
+    setIsOpen(true);
   };
 
-  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.stopPropagation();
-    // const newSelect = { ...filter };
-    console.log(e.target.value);
-    // setFilter(newSelect);
+  const handleSelect = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    position: string
+  ): void => {
+    const newState = { ...filter };
+
+    position === "method"
+      ? newState.method?.push(e.target.value as string)
+      : newState.method?.push(e.target.value as string);
+
+    setFilter(newState);
   };
 
   return (
-    <S.SelectContainer>
-      <span
-        onClick={() => {
-          handleOpen();
+    <S.SelectContainer
+      onMouseLeave={() => {
+        setIsOpen(false);
+      }}
+    >
+      <S.SelectDefault
+        className="selectTitle"
+        onMouseEnter={() => {
+          setIsOpen(true);
         }}
       >
         {Object.keys(data).length !== 2
           ? defaultMenu.가공방식
           : defaultMenu.재료}
-        ▼
-      </span>
-      {isOpen && (
-        <S.SelectBox>
-          {(Object.keys(data) as Array<keyof typeof data>).map(
-            (item, index) => {
-              return (
-                <>
-                  <li key={index}>
-                    <label htmlFor="select">
-                      <input
-                        id="select"
-                        onChange={(e) => {
-                          handleSelect(e);
-                        }}
-                        type="checkbox"
-                        value={data[item]}
-                      />
-                      {data[item]}
-                    </label>
-                  </li>
-                </>
-              );
-            }
-          )}
+        &nbsp;▼
+      </S.SelectDefault>
+      {
+        <S.SelectBox isOpen={isOpen}>
+          {(Object.keys(data) as Array<keyof typeof data>).map((item) => {
+            return (
+              <>
+                <li key={item}>
+                  <label htmlFor="select">
+                    <input
+                      id="select"
+                      onChange={(e) => {
+                        handleSelect(e, "method");
+                      }}
+                      type="checkbox"
+                      value={data[item]}
+                    />
+                    {data[item]}
+                  </label>
+                </li>
+              </>
+            );
+          })}
         </S.SelectBox>
-      )}
+      }
     </S.SelectContainer>
+  );
+};
+
+const Toggle = ({ filter, setFilter }: FilterPropsType) => {
+  const handleCheck = (): void => {
+    const newState = { ...filter };
+
+    newState.check = !newState.check;
+
+    setFilter(newState);
+  };
+
+  return (
+    <S.ToggleContainer
+      onClick={() => {
+        handleCheck();
+      }}
+    >
+      <S.ToggleBox
+        checked={filter.check}
+        id="checkbox"
+        type="checkbox"
+        readOnly
+      />
+      <S.ToggleBoxLabel />
+      <S.ToggleMessage>상담 중인 요청만 보기</S.ToggleMessage>
+    </S.ToggleContainer>
   );
 };
 

@@ -12,27 +12,35 @@ export const FilterZone = styled.div`
   justify-content: space-between;
 `;
 
-export const SelectContainer = styled.div``;
+export const SelectContainer = styled.div`
+`;
+
+export const SelectDefault = styled.span`
+  display: flex;
+  width: 98px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #939fa5;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    background:#1565C0;
+    color:#fff;
+  }
+`;
 
 export const SelectZone = styled.div`
   display: flex;
 `;
 
-export const SelectBox = styled.ul`
+export const SelectBox = styled.ul<{isOpen :boolean}>`
   padding: 10px 6px;
   list-style: none;
   width: 130px;
   border-radius: 4px;
   border: 1px solid #939fa5;
   margin-right: 8px;
-
-  & span {
-    display: inline-block;
-    width: 98px;
-    height: 32px;
-    border-radius: 4px;
-    border: 1px solid #939fa5;
-  }
+  visibility: ${props=> props.isOpen ? `visible` : `hidden`}
 
   & #select {
     width: 18px;
@@ -63,6 +71,7 @@ export const ResetBtn = styled.div`
 export const ResetContainer = styled.div`
   display: flex;
   cursor: pointer;
+  align-items: center;
 `;
 
 export const ResetMessage = styled.span`
@@ -73,7 +82,9 @@ export const ResetMessage = styled.span`
 export const ToggleContainer = styled.div`
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  top:10px;
+
 `;
 
 export const ToggleBoxLabel = styled.label`
@@ -122,4 +133,9 @@ export const ToggleBox = styled.input`
       transition: 0.2s;
     }
   }
+`;
+
+export const ToggleMessage = styled.span`
+  margin-left: 16px;
+  transform: translateY(-10px);
 `;
