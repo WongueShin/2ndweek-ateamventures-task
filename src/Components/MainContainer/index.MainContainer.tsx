@@ -17,7 +17,7 @@ const MainContainer = ({ data }: Props) => {
   }, [data]);
 
   console.log(data);
- 
+
   return (
     <S.MainContainerDiv>
       {isLoading ? (
@@ -28,12 +28,11 @@ const MainContainer = ({ data }: Props) => {
         </>
       ) : (
         <>
-          {data ? (
+          {data && data.length > 0 ? (
             data.map((cardData: childType, index: number) => {
               return (
                 <div key={index}>
-                  <RequestCard  cardData={cardData} />
-   
+                  <RequestCard cardData={cardData} />
                 </div>
               );
             })
@@ -41,13 +40,11 @@ const MainContainer = ({ data }: Props) => {
             <>
               <S.BlankDiv>
                 <S.BlankSpan>조건에 맞는 견적 요청이 없습니다.</S.BlankSpan>
-             
               </S.BlankDiv>
             </>
           )}
         </>
       )}
-             
     </S.MainContainerDiv>
   );
 };
