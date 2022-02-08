@@ -29,6 +29,9 @@ url = https://pensive-boyd-5a0202.netlify.app/
 </tr>
 </table>
 
+## ✔️Git 커밋 메시지 컨벤션
+<img src="https://user-images.githubusercontent.com/84527643/152975733-0e6d3063-9bba-4fe7-a237-371427a56eea.png" width="500"/>
+
 ## ✔️프로젝트 소개
 
 - [x] 에이팀벤쳐스 고객사들의 요청을 카드 포멧으로 정리하여 모은 화면을 구현하였습니다.
