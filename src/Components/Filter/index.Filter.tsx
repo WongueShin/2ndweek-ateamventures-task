@@ -58,10 +58,12 @@ const Select = (props: SelectPropsType) => {
     
     const newState = {...props.filter}
 
-    position === MaterialType ? newState.material.push(item) : newState.method.push(item);
-
+    if(position === MaterialType){
+      !newState.material.includes(item) ? newState.material.push(item) : newState.material.splice(newState.material.indexOf(item),1);
+    } else {
+      !newState.method.includes(item) ? newState.method.push(item) : newState.method.splice(newState.method.indexOf(item),1);
+    }
     props.setFilter(newState);
-
   };
 
   return (
@@ -93,7 +95,8 @@ const Select = (props: SelectPropsType) => {
                       <label htmlFor="select">
                         <input
                           id="select"
-                          onChange={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             handleSelect(props.data[item], props.data );
                           }}
                           type="checkbox"
