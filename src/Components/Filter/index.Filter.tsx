@@ -1,7 +1,7 @@
 import * as S from "Components/Filter/style.Filter";
 import { FilterType } from "Components/Main/index.Main";
-// import MaterialType from "src/SangSu/MaterialType";
-// import MethodType from "src/SangSu/MethodType";
+// import { MaterialType } from "src/Const/MaterialType";
+// import { MethodType } from "src/Const/MethodType";
 import { useState } from "react";
 
 enum MaterialType {
@@ -126,7 +126,6 @@ const Select = (props: SelectPropsType) => {
                         id={`select${index}`}
                         checked={handleChecked(props.data[item], props.data)}
                         onClick={(e) => {
-                          console.log(e.target)
                           e.stopPropagation();
                           handleSelect(props.data[item], props.data);
                         }}
