@@ -137,5 +137,7 @@ export const ToggleBox = styled.input`
 
 export const ToggleMessage = styled.span`
   margin-left: 16px;
+  color:#323D45;
+  font-weight:800;
   transform: translateY(-10px);
 `;
