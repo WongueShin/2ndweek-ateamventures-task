@@ -51,19 +51,16 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
   );
 };
 
-const Select = (
-  { data }: SelectPropsType,
-  { filter, setFilter }: FilterPropsType,
-) => {
-
+const Select = (props: SelectPropsType) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (
-    item: string
-  ): void => {
+  const handleSelect = (item: string, position :typeof MaterialType | typeof MethodType): void => {
+    
+    const newState = {...props.filter}
 
+    position === MaterialType ? newState.material.push(item) : newState.method.push(item);
 
-    console.log(filter)
+    props.setFilter(newState);
 
   };
 
@@ -80,35 +77,35 @@ const Select = (
         }}
         isOpen={isOpen}
       >
-        {Object.keys(data).length !== 2
+        {Object.keys(props.data).length !== 2
           ? defaultMenu.method
           : defaultMenu.material}
-        &nbsp;<S.ArrowIcon>▼</S.ArrowIcon>
+        &nbsp;
+          <S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
-      {
+        {
           <S.SelectBox isOpen={isOpen}>
-            {(Object.keys(data) as Array<keyof typeof data>).map((item) => {
-              return (
-                <>
-                  <li key={item}>
-                    <label htmlFor="select">
-                      <input
-                        id="select"
-                        onChange={() => {
-                          handleSelect(data[item]);
-                        }}
-                        type="checkbox"
-                        value={data[item]}
-                      />
-                      {data[item]}
-                    </label>
-                  </li>
-                </>
-              );
-            })}
+            {(Object.keys(props.data) as Array<keyof typeof props.data>).map(
+              (item) => {
+                return (
+                    <li key={item}>
+                      <label htmlFor="select">
+                        <input
+                          id="select"
+                          onChange={() => {
+                            handleSelect(props.data[item], props.data );
+                          }}
+                          type="checkbox"
+                        />
+                        {props.data[item]}
+                      </label>
+                    </li>
+                );
+              }
+            )}
           </S.SelectBox>
-      }
+        }
       </S.OverFlowContainer>
     </S.SelectContainer>
   );
@@ -116,7 +113,6 @@ const Select = (
 
 const Toggle = ({ filter, setFilter }: FilterPropsType) => {
   const handleCheck = (): void => {
-    
     const newState = { ...filter };
 
     newState.check = !newState.check;
