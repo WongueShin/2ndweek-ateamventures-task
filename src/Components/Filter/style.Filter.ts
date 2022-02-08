@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 90%;
+  /* width: 90%; */
   margin: auto;
   margin-top: 110px;
-  line-height:1.6;
+  line-height: 1.6;
 
-  h3{
-    color:#323D45;
-    font-size:20px;
-    margin:0;
+  h3 {
+    color: #323d45;
+    font-size: 20px;
+    margin: 0;
   }
-  p{
-    font-size:16px;
-    margin:0;
+  p {
+    font-size: 16px;
+    margin: 0;
   }
 `;
 
 export const OverFlowContainer = styled.div`
-  overflow:hidden;
-`
+  overflow: hidden;
+`;
 
 export const FilterZone = styled.div`
   display: flex;
@@ -28,10 +28,9 @@ export const FilterZone = styled.div`
   margin-top: 32px;
 `;
 
-export const SelectContainer = styled.div`
-`;
+export const SelectContainer = styled.div``;
 
-export const SelectDefault = styled.span<{isOpen :boolean}>`
+export const SelectDefault = styled.span<{ isOpen: boolean }>`
   display: flex;
   width: 98px;
   height: 32px;
@@ -39,16 +38,17 @@ export const SelectDefault = styled.span<{isOpen :boolean}>`
   border: 1px solid #939fa5;
   justify-content: center;
   align-items: center;
-  background : ${props => props.isOpen ? "#1565C0" : "#fff"};
-  color : ${props => props.isOpen ? "#fff" : "#000"};
+  background: ${(props) => (props.isOpen ? "#1565C0" : "#fff")};
+  color: ${(props) => (props.isOpen ? "#fff" : "#000")};
 `;
 
 export const SelectZone = styled.div`
   display: flex;
 `;
 
-export const SelectBox = styled.ul<{isOpen :boolean}>`
-  transform: translateY(${props=> props.isOpen ? "0px" : "-200px"}) !important;
+export const SelectBox = styled.ul<{ isOpen: boolean }>`
+  transform: translateY(${(props) =>
+    props.isOpen ? "0px" : "-200px"}) !important;
   transition 0.25s ease-in;
   padding: 10px 6px;
   list-style: none;
@@ -56,7 +56,7 @@ export const SelectBox = styled.ul<{isOpen :boolean}>`
   border-radius: 4px;
   border: 1px solid #939fa5;
   margin-right: 8px;
-  visibility: ${props=> props.isOpen ? `visible` : `hidden`}
+  visibility: ${(props) => (props.isOpen ? `visible` : `hidden`)}
 
   & #select {
     width: 18px;
@@ -99,8 +99,7 @@ export const ToggleContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  top:10px;
-
+  top: 10px;
 `;
 
 export const ToggleBoxLabel = styled.label`
@@ -153,7 +152,7 @@ export const ToggleBox = styled.input`
 
 export const ToggleMessage = styled.span`
   margin-left: 16px;
-  color:#323D45;
-  font-weight:800;
+  color: #323d45;
+  font-weight: 800;
   transform: translateY(-10px);
 `;

@@ -54,9 +54,9 @@ const Main: React.FC = () => {
 
   return (
     <S.InnerMainContainer>
-      <S.Main>
-        <Filter filter={filter} setFilter={setFilter} />
-      </S.Main>
+      {/* <S.Main> */}
+      <Filter filter={filter} setFilter={setFilter} />
+      {/* </S.Main> */}
       <MainContainer data={fetchData} />
     </S.InnerMainContainer>
   );

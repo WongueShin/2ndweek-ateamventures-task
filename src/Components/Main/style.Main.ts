@@ -5,7 +5,7 @@ export const Main = styled.div`
 `;
 
 export const InnerMainContainer = styled.div`
-  width: 70%;
+  width: 1130px;
   margin-bottom: 60px;
-  margin-left: 12%;
+  margin: 0 154px;
 `;
