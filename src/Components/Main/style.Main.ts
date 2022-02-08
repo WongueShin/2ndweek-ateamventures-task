@@ -6,6 +6,5 @@ export const Main = styled.div`
 
 export const InnerMainContainer = styled.div`
   width: 1130px;
-  margin-bottom: 60px;
-  margin: 0 154px;
+  margin: 0 154px 60px;
 `;
