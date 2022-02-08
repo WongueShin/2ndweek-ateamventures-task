@@ -42,6 +42,10 @@ export const SelectDefault = styled.span<{ isOpen: boolean }>`
   color: ${(props) => (props.isOpen ? "#fff" : "#000")};
 `;
 
+export const ArrowIcon = styled.span`
+  color: #939FA5;
+`
+
 export const SelectZone = styled.div`
   display: flex;
 `;
