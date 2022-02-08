@@ -32,6 +32,11 @@ interface SelectPropsType extends FilterPropsType {
 }
 
 const Filter = ({ filter, setFilter }: FilterPropsType) => {
+  const handleReset = () => {
+    const newState = { method: [], material: [], check: filter.check };
+    setFilter(newState);
+  };
+
   return (
     <S.Container>
       <h3>들어온 요청</h3>
@@ -42,7 +47,13 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
           <Select data={MethodType} filter={filter} setFilter={setFilter} />
           <S.ResetContainer>
             <S.ResetBtn />
-            <S.ResetMessage>필터링리셋</S.ResetMessage>
+            <S.ResetMessage
+              onClick={() => {
+                handleReset();
+              }}
+            >
+              필터링리셋
+            </S.ResetMessage>
           </S.ResetContainer>
         </S.SelectZone>
         <Toggle filter={filter} setFilter={setFilter} />
@@ -54,14 +65,20 @@ const Filter = ({ filter, setFilter }: FilterPropsType) => {
 const Select = (props: SelectPropsType) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (item: string, position :typeof MaterialType | typeof MethodType): void => {
-    
-    const newState = {...props.filter}
+  const handleSelect = (
+    item: string,
+    position: typeof MaterialType | typeof MethodType
+  ): void => {
+    const newState = { ...props.filter };
 
-    if(position === MaterialType){
-      !newState.material.includes(item) ? newState.material.push(item) : newState.material.splice(newState.material.indexOf(item),1);
+    if (position === MaterialType) {
+      !newState.material.includes(item)
+        ? newState.material.push(item)
+        : newState.material.splice(newState.material.indexOf(item), 1);
     } else {
-      !newState.method.includes(item) ? newState.method.push(item) : newState.method.splice(newState.method.indexOf(item),1);
+      !newState.method.includes(item)
+        ? newState.method.push(item)
+        : newState.method.splice(newState.method.indexOf(item), 1);
     }
     props.setFilter(newState);
   };
@@ -83,7 +100,7 @@ const Select = (props: SelectPropsType) => {
           ? defaultMenu.method
           : defaultMenu.material}
         &nbsp;
-          <S.ArrowIcon>▼</S.ArrowIcon>
+        <S.ArrowIcon>▼</S.ArrowIcon>
       </S.SelectDefault>
       <S.OverFlowContainer>
         {
@@ -91,19 +108,19 @@ const Select = (props: SelectPropsType) => {
             {(Object.keys(props.data) as Array<keyof typeof props.data>).map(
               (item) => {
                 return (
-                    <li key={item}>
-                      <label htmlFor="select">
-                        <input
-                          id="select"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleSelect(props.data[item], props.data );
-                          }}
-                          type="checkbox"
-                        />
-                        {props.data[item]}
-                      </label>
-                    </li>
+                  <li key={item}>
+                    <label htmlFor="select">
+                      <input
+                        id="select"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSelect(props.data[item], props.data);
+                        }}
+                        type="checkbox"
+                      />
+                      {props.data[item]}
+                    </label>
+                  </li>
                 );
               }
             )}
