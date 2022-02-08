@@ -1,7 +1,7 @@
-import React from "react";
-import * as S from "Components/MainContainer/sytleMC";
-import RequestCard from "Components/RequestCard/index.RequestCard";
-import { childType } from "Components/Main/index.Main";
+import React from 'react';
+import * as S from 'Components/MainContainer/sytleMC';
+import RequestCard from 'Components/RequestCard/index.RequestCard';
+import { childType } from 'Components/Main/index.Main';
 
 interface Props {
   data: childType[];

@@ -22,7 +22,9 @@ const RequestCard = ({ cardData }: CardProps) => {
       <S.DivisionLine />
       <S.OrderContent>
         <S.DetailSapn>도면개수</S.DetailSapn>
-        <S.RequestSpan> {cardData.count}개</S.RequestSpan>
+        <S.RequestSpan>
+          {cardData.count ? cardData.count : cardData.docs}개
+        </S.RequestSpan>
       </S.OrderContent>
       <S.OrderContent>
         <S.DetailSapn>총 수량</S.DetailSapn>
@@ -34,7 +36,7 @@ const RequestCard = ({ cardData }: CardProps) => {
       </S.OrderContent>
       <S.OrderContent>
         <S.DetailSapn>재료</S.DetailSapn>
-        <S.RequestSpan> {cardData.material}</S.RequestSpan>
+        <S.RequestSpan> {cardData.material.toString()}</S.RequestSpan>
       </S.OrderContent>
       <S.ButtonContainer>
         <S.RequestDetailBtn>

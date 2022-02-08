@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "Components/Main/style.Main";
 import MainContainer from "Components/MainContainer/index.MainContainer";
-// import { MaterialType } from "src/SangSu/MaterialType";
-// import { MethodType } from "src/SangSu/MethodType";
 import Filter from "Components/Filter/index.Filter";
 
 export interface childType {
@@ -10,7 +8,8 @@ export interface childType {
   title: string;
   client: string;
   due: string;
-  count: number;
+  count?: number;
+  docs?: number;
   amount: number;
   method: string[];
   material: string[];
